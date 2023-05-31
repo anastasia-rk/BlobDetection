@@ -1,20 +1,8 @@
 # Imports
 import cv2
 import numpy as np
-import scipy as sp
-# import matplotlib
-# import matplotlib.pyplot as plt
-# matplotlib.use('TkAgg')
-# plt.rcParams.update({
-#     "text.usetex": True,
-#     "font.family": "sans-serif",
-#     "font.sans-serif": ["Helvetica"]})
-# # for Palatino and other serif fonts use:
-# plt.rcParams.update({
-#     "text.usetex": True,
-#     "font.family": "serif",
-#     "font.serif": ["Palatino"],
-# })
+import file_open
+
 def conservative_smoothing_gray(data, filterSize):
     temp = []
     indexer = filterSize // 2
@@ -40,8 +28,10 @@ def conservative_smoothing_gray(data, filterSize):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     # Read image
+
+    fileName = file_open.gui_fname()
+    im = cv2.imread(fileName.decode("utf-8"), cv2.IMREAD_GRAYSCALE)
     im = cv2.imread("InputPhotos/4.jpg", cv2.IMREAD_GRAYSCALE)
-    # Img = cv2.imread(‘./ img.jpg’, cv2.IMREAD_GRAYSCALE)
 
     # denoise the image before increasing contrast
     filterSize = 5
